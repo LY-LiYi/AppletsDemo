@@ -25,10 +25,12 @@ Page({
         let longitude = res.longitude // 经度
         console.log('精度为' + latitude);
         console.log('维度为' + longitude);
-       console.log(that);
-        that.latitude=latitude;
-
-        console.log(that);
+        // this.setData:设置当前页面绑定的属性
+       this.setData(
+         {
+           latitude:latitude,
+           longitude:longitude,
+         });
         
       }
     });
