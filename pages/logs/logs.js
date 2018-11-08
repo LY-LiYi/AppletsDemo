@@ -25,7 +25,7 @@ Page({
         let longitude = res.longitude // 经度
         console.log('精度为' + latitude);
         console.log('维度为' + longitude);
-        // this.setData:设置当前页面绑定的属性
+        // this.setData:设置当前页面绑定的属性 微信的方法
        this.setData(
          {
            latitude:latitude,
