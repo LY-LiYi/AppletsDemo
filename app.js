@@ -1,9 +1,9 @@
 //app.js
 App({
-  // 小程序启动之后触发
+  // 小程序启动(初始化)之后触发 全局触发一次
   onLaunch: function () {
     // 展示本地存储能力
-    console.log('小程序被打开了' + new Date());
+    console.log('小程序被打开了'+new Date());
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
@@ -34,22 +34,6 @@ App({
         }
       }
     })
-    //分享功能的设置
-    wx.showShareMenu({
-      withShareTicket: true,
-      // 分享成功
-      success() {
-        console.log("分享成功");
-      },
-      //分享失败
-      fail() {
-      },
-      //  接口调用后(失败或成功都会执行)的回调函数
-      complete() {
-        console.log("分享回调");
-      }
-    })
-
   },
   globalData: {
     userInfo: null

@@ -17,5 +17,11 @@
 }
 
 .usermotto {
-  margin-top: 200px;
+  margin-top: 155px;
+}
+
+.address
+{
+  margin-top: 40rpx;
+  font-size: 50rpx;
 }

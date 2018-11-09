@@ -6,32 +6,78 @@ const QQMapWX=require('../../utils/qqmap-wx-jssdk.min.js')
 Page({
   data: {
     logs: [],
-    jingdu:'经度',
-    weidu:'维度',
     latitude:'',
     longitude:'',
+    addrsss:'',
+    speed:'',
+    accuracy:'',
+    altitude:'',
+    verticalAccuracy:'',
+    horizontalAccuracy:'',
   },
   // 渲染完界面之后的回调函数
   onLoad: function () {
+
+    //打开转发功能
+    wx.showShareMenu({
+      withShareTicket: true
+    })
+
+    var that=this;
     //传值方法
     this.setData({
       logs: (wx.getStorageSync('logs') || []).map(log => {
         return util.formatTime(new Date(log))
       }),
     });
+   
+    //判断用户是否打开定位权限
+    // wx.getUserInfo(
+    // { 
+    //   success:function(res)
+    //   {
+    //     var city = userInfo.city;
+    //   }
+    // })
+    wx.getSetting({
+      success(res) {
+        console.log(res);
+        if (!res.authSetting['scope.userLocation']) {
+          // // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+          // wx.getUserInfo({
+          //   success: function (res) {
+          //     console.log(res.userLocation)
+          //   }
+          // })
+          console.log('用户位置 权限未打开');
+        }
+      }
+    })
 
-    //获取用户经纬度
+    //获取用户经纬度及其他信息
     wx.getLocation({
       success: (res) => {
-        let latitude = res.latitude // 纬度
-        let longitude = res.longitude // 经度
+        console.log(res);
+        let latitude = res.latitude; // 纬度
+        let longitude = res.longitude; // 经度
+        let speed = res.speed;
+        let accuracy = res.accuracy;
+        let altitude = res.altitude;
+        let verticalAccuracy=res.verticalAccuracy;
+        let horizontalAccuracy = res.horizontalAccuracy;
         console.log('精度为' + latitude);
         console.log('维度为' + longitude);
+        console.log('速度为' + speed);
         // this.setData:设置当前页面绑定的属性 微信的方法
        this.setData(
          {
            latitude:latitude,
            longitude:longitude,
+           speed: speed,
+           accuracy: accuracy,
+           altitude: altitude,
+           verticalAccuracy: verticalAccuracy,
+           horizontalAccuracy:horizontalAccuracy,
          });
         
 
@@ -44,18 +90,31 @@ Page({
         qqmapsdk.reverseGeocoder(
           {
             location: {
-              latitude: this.latitude,
-              longitude: this.longitude,
+              latitude: that.data.latitude,
+              longitude: that.data.longitude,
             },
-            success: function (address) {
-              console.log('address');
+            success: function (res) {
+              console.log(res);
+              var address = res.result.address;
+              console.log(res.result.address);
+              that.setData(
+              {
+                  addrsss: res.result.address,
+              });
+            },
+            fail:function(res)
+            {
+              console.log(res);
+              console.log(res.status);
             },
             complete: function (res) {
-              console.log('调用腾讯地图成功');
+              console.log(this.location.latitude);
+              console.log(this.location.longitude);
             }
           });
       }
     });
+
 
     
 

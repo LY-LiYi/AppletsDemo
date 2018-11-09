@@ -3,6 +3,12 @@
   <!-- <block wx:for="{{logs}}" wx:for-item="log">
     <text class="log-item">{{index + 1}}. {{log}}</text>
   </block> -->
-    <text>{{jingdu}}:{{latitude}}</text>
-    <text>{{weidu}}:{{longitude}}</text>
+    <text>经度:{{latitude}}</text>
+    <text>维度:{{longitude}}</text>
+    <text>速度:{{speed}}</text>
+    <text>位置的精确度:{{accuracy}}</text>
+    <text>高度:{{altitude}}</text>
+    <text>垂直精度:{{verticalAccuracy}}</text>
+    <text>水平精度:{{horizontalAccuracy}}</text>
+    <text class='address'>当前位置为:{{addrsss}}</text>
 </view>

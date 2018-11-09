@@ -4,16 +4,18 @@ const app = getApp()
 
 Page({
   data: {
-    motto: '我的第一个小程序测试github',
+    motto: '我的第一个小程序  测试github',
     // userinfo为用户信息
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   //事件处理函数
-  bindViewTap: function() {
+  getAddress:function()
+  {
+    //微信跳转
     wx.navigateTo({
-      url: '../logs/logs'
+      url: '../logs/logs',
     })
   },
   onLoad: function () {
@@ -43,7 +45,13 @@ Page({
         }
       })
     }
+
+    //打开右上角三个点的转发功能
+    wx.showShareMenu({
+      withShareTicket: true
+    })
   },
+
   getUserInfo: function(e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
@@ -52,4 +60,5 @@ Page({
       hasUserInfo: true
     })
   }
+  
 })
