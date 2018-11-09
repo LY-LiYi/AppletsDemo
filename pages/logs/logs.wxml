@@ -11,4 +11,7 @@
     <text>垂直精度:{{verticalAccuracy}}</text>
     <text>水平精度:{{horizontalAccuracy}}</text>
     <text class='address'>当前位置为:{{addrsss}}</text>
+
+    <!-- <map longitude="{{latitude}}" latitude="{{longitude}}"></map> -->
+
 </view>
