@@ -25,7 +25,7 @@ Page({
     })
 
    
-    var that=this;
+    const that=this;
     //传值方法
     this.setData({
       logs: (wx.getStorageSync('logs') || []).map(log => {
