@@ -62,8 +62,8 @@ Page({
                     let verticalAccuracy=res.verticalAccuracy;
                     let horizontalAccuracy = res.horizontalAccuracy;
                     console.log('授权后精度为' + latitude);
-                    console.log('授权后为' + longitude);
-                    console.log('授权后为' + speed);
+                    console.log('授权维度为' + longitude);
+                    console.log('授权速度为' + speed);
                     // this.setData:设置当前页面绑定的属性 微信的方法
                    that.setData(
                      {
@@ -75,12 +75,13 @@ Page({
                        verticalAccuracy: verticalAccuracy,
                        horizontalAccuracy:horizontalAccuracy,
                      });
-                     
+                    
+            
                     // 实例化API核心类
                     var qqmapsdk = new QQMapWX({
                       key: 'L2ABZ-BW5R4-VYAUD-XONDT-5AP46-IZFL5'
                     });
-
+            
                     //调用地图接口
                     qqmapsdk.reverseGeocoder(
                       {
@@ -93,11 +94,12 @@ Page({
                           var address = res.result.address;
                           console.log(res.result.address);
                           that.setData(
-                            {
+                          {
                               addrsss: res.result.address,
-                            });
+                          });
                         },
-                        fail: function (res) {
+                        fail:function(res)
+                        {
                           console.log(res);
                           console.log(res.status);
                         },
@@ -106,10 +108,11 @@ Page({
                           console.log(this.location.longitude);
                         }
                       });
-            
                   },
                   
                 });
+            
+                
               }
               else
               {
