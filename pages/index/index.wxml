@@ -10,6 +10,9 @@
   <view class='address'>
     <button bindtap="getAddress">查看我的位置</button>
   </view>
+  <view class='address'>
+    <button bindtap="getCal">计算器</button>
+  </view>
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
   </view>

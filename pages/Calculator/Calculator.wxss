@@ -1,0 +1,12 @@
+/* pages/Calculator/Calculator.wxss */
+input{
+  display: inline-block;
+  width: 20%;
+  border: 1px solid #666;
+}
+button
+{
+  display: inline-block;
+  width: 20%;
+  font-size: 30rpx;
+}

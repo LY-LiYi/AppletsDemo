@@ -18,6 +18,12 @@ Page({
       url: '../logs/logs',
     })
   },
+  getCal: function () {
+    //微信跳转
+    wx.navigateTo({
+      url: '../Calculator/Calculator',
+    })
+  },
   onLoad: function () {
     if (app.globalData.userInfo) {
       this.setData({
